@@ -14,8 +14,8 @@ POST http://localhost:8000/api/users
 Content-Type: application/json
 
 {
-    "fullname": "Kibet Kibet1",
-    "email": "kibet@gmail.com",
+    "fullname": "Denis",
+    "email": "mail.com",
     "password": "123df45"
 }
 
@@ -56,6 +56,12 @@ GET http://localhost:8000/api/cities
 
 ###
 GET http://localhost:8000/api/cities/1
+
+###
+GET  http://localhost:8000/api/cities-with-restaurants
+
+###
+GET http://localhost:8000/api/state-with-cities
 
 ###
 POST http://localhost:8000/api/cities

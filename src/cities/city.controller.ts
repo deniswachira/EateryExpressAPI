@@ -1,5 +1,5 @@
 import { Context } from "hono";
-import { citiesService, deleteCityService, getCityByIdService, insertCityService, updateCityService } from "./city.service";
+import { citiesService, deleteCityService, getCitiesWithRestaurantsService, getCityByIdService, insertCityService, updateCityService } from "./city.service";
 
 
 //list of cities
@@ -69,5 +69,16 @@ export const deleteCity = async (c: Context) => {
         return c.json({ msg: deletedCity }, 200);
     } catch (error: any) {
         return c.text(error?.message, 400);
+    }
+}
+
+//get city with restaurants
+export const getCityWithRestaurants = async (c: Context) => {
+    try {
+        const citiesWithRestaurants = await getCitiesWithRestaurantsService();
+        if (citiesWithRestaurants === null) return c.text("No cities with restaurant found");
+        return c.json(citiesWithRestaurants, 200);
+    } catch (error: any) {
+        return c.text("Error while fetching cities with restaurants");        
     }
 }

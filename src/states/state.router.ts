@@ -1,5 +1,5 @@
 import {Hono} from "hono"
-import { deleteState, getStateById, insertState, listAllStates, updateState } from "./state.controller";
+import { deleteState, getStateById, getStateWithCities, insertState, listAllStates, updateState } from "./state.controller";
 
 export const stateRouter = new Hono();
 
@@ -17,3 +17,5 @@ stateRouter.put('/state/:id', updateState)
 
 //delete state
 stateRouter.delete("/state/:id", deleteState)
+
+stateRouter.get("/state-with-cities", getStateWithCities)

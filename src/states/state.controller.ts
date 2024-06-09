@@ -1,5 +1,5 @@
 import { Context } from "hono";
-import { deleteStateService, getStateByIdService, insertStateService, statesService, updateStateService } from "./state.service";
+import { deleteStateService, getStateByIdService, getStatesWithCitiesService, insertStateService, statesService, updateStateService } from "./state.service";
 
 //list of states
 export const listAllStates = async (c: Context) => {
@@ -71,5 +71,15 @@ export const deleteState = async (c: Context) => {
         return c.json({ msg: deletedState }, 200);
     } catch (error: any) {
         return c.text(error?.message, 400);
+    }
+}
+
+export const getStateWithCities = async(c:Context) =>{
+     try {
+        const statesWithCites = await getStatesWithCitiesService();
+        if (statesWithCites === null) return c.text("No states with cities found");
+        return c.json(statesWithCites, 200);
+    } catch (error: any) {
+        return c.text("Error while fetching states with cities");
     }
 }

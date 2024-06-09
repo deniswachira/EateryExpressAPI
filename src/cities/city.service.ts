@@ -29,3 +29,20 @@ export const deleteCityService = async(id:number) => {
     return "City deleted successfully 🎉"
 }
 
+export const getCitiesWithRestaurantsService = async() => {
+    return await db.query.city_table.findMany({
+        with:{
+            // list colums
+            restaurants:true
+          }
+    })
+}
+
+export const getCityWithStateService = async() => {
+    return await db.query.city_table.findMany({
+        with:{
+            state:true
+        }
+    })
+}
+

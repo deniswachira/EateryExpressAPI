@@ -28,3 +28,11 @@ export const deleteStateService = async(id:number) => {
     await db.delete(state_table).where(eq(state_table.state_id,id));
     return "State deleted successfully 🎉"
 }
+
+export const getStatesWithCitiesService = async() =>{
+  return await db.query.state_table.findMany({    
+        with: {
+            cities: true
+        }
+    });  
+}

@@ -12,7 +12,7 @@ userRouter.get('/users/:id', getUserById)
 
 //insert user
 userRouter.post('/users',zValidator('json',createUserValidator,(result,c)=>{
-    if(!result.success) return c.json( result.error + "😒",400)}), 
+    if(!result.success) return c.text( result.error.message + "😒",400)}), 
     insertUser)
 
 //update user

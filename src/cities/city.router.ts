@@ -1,5 +1,5 @@
 import {Hono} from "hono"
-import { deleteCity, getCityById, insertCity, listAllCities, updateCity } from "./city.controller";
+import { deleteCity, getCityById, getCityWithRestaurants, insertCity, listAllCities, updateCity } from "./city.controller";
 
 export const cityRouter = new Hono();
 
@@ -17,3 +17,6 @@ cityRouter.put('/cities/:id', updateCity)
 
 //delete city
 cityRouter.delete('/cities/:id', deleteCity)
+
+//get city with restaurants
+cityRouter.get("/cities-with-restaurants", getCityWithRestaurants)
